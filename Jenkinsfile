@@ -26,16 +26,16 @@ docker image rm akkisain/angularproject:${BUILD_ID}'''
     stage('deploy on test') {
       steps {
          // sh '''docker context use testserver
-docker container run -itd -p $devport:8080 akkisain/angularproject:${BUILD_ID}
+  sh 'docker container run -itd -p $devport:8080 akkisain/angularproject:${BUILD_ID}'
  // docker context use default
-'''
+// '''
       }
     }
 
     stage('deploy on prod') {
       steps {
     //    sh '''docker context use prodserver
-docker container run -itd -p  $devport:8080 akkisain/angularproject:${BUILD_ID}
+  sh 'docker container run -itd -p  $devport:8080 akkisain/angularproject:${BUILD_ID}'
 // docker context use default'''
       }
     }
