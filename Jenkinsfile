@@ -35,7 +35,7 @@ docker container run -itd -p $devport:$devport akkisain/angularproject:${BUILD_I
     stage('deploy on prod') {
       steps {
     //    sh '''docker context use prodserver
-docker container run -itd -p 4200:4200 akkisain/angularproject:${BUILD_ID}
+docker container run -itd -p  $devport:$devport akkisain/angularproject:${BUILD_ID}
 // docker context use default'''
       }
     }
