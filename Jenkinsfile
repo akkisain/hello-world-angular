@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  environment {
+  devport = '4200'
+  }
   stages {
     stage('Build') {
       steps {
@@ -23,7 +26,7 @@ docker image rm akkisain/angularproject:${BUILD_ID}'''
     stage('deploy on test') {
       steps {
          // sh '''docker context use testserver
-docker container run -itd -p 4200:4200 coolgourav147/angularproject:${BUILD_ID}
+docker container run -itd -p $devport:$devport akkisain/angularproject:${BUILD_ID}
  // docker context use default
 '''
       }
@@ -32,7 +35,7 @@ docker container run -itd -p 4200:4200 coolgourav147/angularproject:${BUILD_ID}
     stage('deploy on prod') {
       steps {
     //    sh '''docker context use prodserver
-docker container run -itd -p 4200:4200 coolgourav147/angularproject:${BUILD_ID}
+docker container run -itd -p 4200:4200 akkisain/angularproject:${BUILD_ID}
 // docker context use default'''
       }
     }
