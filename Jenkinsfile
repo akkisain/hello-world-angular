@@ -17,7 +17,7 @@ pipeline {
           sh '''docker login -u ${myusername} -p ${mypassword}
 docker image push akkisain/angularproject:${BUILD_ID}
 docker logout
-docker image rm akkisain/angularproject:${BUILD_ID}'''
+ // docker image rm akkisain/angularproject:${BUILD_ID}'''
         }
         
       }
